@@ -1,6 +1,8 @@
 ## Hi, I'm Pranay!
 
 You can use the [editor on GitHub](https://github.com/pranaynaidu/pranaynaidu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+
+```markdown
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
  * pranay.naidu@snhu.edu
@@ -215,6 +217,7 @@ public class ZooMonitoringSystem {
       MainMenuChoice(userMenuChoice); //calls the function and uses the user's choice to present information
    }
 }
+```
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
