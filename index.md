@@ -1,8 +1,8 @@
 ## Hi, I'm Pranay!
 
->You can use the [editor on GitHub](https://github.com/pranaynaidu/pranaynaidu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+> You can use the [editor on GitHub](https://github.com/pranaynaidu/pranaynaidu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
-```markdown
+```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
  * pranay.naidu@snhu.edu
