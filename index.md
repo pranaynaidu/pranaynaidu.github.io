@@ -1,4 +1,7 @@
-## Hey there, I'm Pranay
+# Pranay Naidu
+## CS499 Computer Science Capstone
+### Southern New Hampshire University
+#### Copyright 2020
 > Check out my ePortfolio!
 
 You can use the [editor on GitHub](https://github.com/pranaynaidu/pranaynaidu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
