@@ -1,9 +1,3 @@
-
-## CS499 Computer Science Capstone
-### Southern New Hampshire University
-
-
-
 > Hey there, I'm Pranay. 
 > Check out my ePortfolio!
 
