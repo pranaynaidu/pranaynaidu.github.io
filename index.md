@@ -2,7 +2,7 @@
 # Check out my ePortfolio
 
 ## Personal Self-Assessment
-
+The Computer Science Program has been a tremendous journey and a proud accomplishment for me.  
 
 You can use the [editor on GitHub](https://github.com/pranaynaidu/pranaynaidu.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
