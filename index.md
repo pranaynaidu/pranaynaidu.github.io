@@ -1,5 +1,4 @@
-# Hey there, I'm Pranay. 
-# Check out my ePortfolio!
+# **Hey there, I'm Pranay. Check out my ePortfolio**
 
 ## Personal Self-Assessment
 
