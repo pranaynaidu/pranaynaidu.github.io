@@ -1,4 +1,4 @@
-# Pranay Naidu
+
 ## CS499 Computer Science Capstone
 ### Southern New Hampshire University
 
