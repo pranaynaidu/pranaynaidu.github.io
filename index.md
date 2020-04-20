@@ -50,7 +50,7 @@ Each artifact will include an accompanying narrative to discuss the enhancements
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
 
-## *Artifact I - Software Design and Engineering*
+# *Artifact I - Software Design and Engineering*
 The artifact used to illustrate competency and demonstration of key outcomes in the area of software design and engineering is the final project from IT145 – Foundation in Application Development.  This artifact was chosen because it demonstrates the use of software engineering and design, but also algorithms and data structures.  It was created early on in the Computer Science curriculum, so the program is somewhat basic, but showcases some of the basics of software design.  Since there are many stages of the software development life cycle, it is important to incorporate elements that represent the core concepts of software design.  This artifact demonstrates design elements such as patterns, separation of data, and modularity.  
 
 When discussing these design elements, we can see the project uses patterns to identify solutions to recurring problems.  This concept is showcased through user menu options; since we know that the user can circulate throughout the menu by selecting specific options, we can implement a pattern that is guaranteed to work so that it may be reused over and over.  We also maintained a separation of data by reading .txt files rather than hardcoding data structures within the various functions and classes.  When the user selected a specific menu option, the corresponding file was read to display the contents of the file; in this case it was information on animals and habitats.  Finally, modularity included predetermined functions of code to help increase the overall efficiency of the program.  The components within this 
@@ -61,7 +61,7 @@ Another enhancement involved the overall efficiency of the project.  For example
 
 Finally, understanding code is very important for developers in a team setting.  When looking at the original artifact, the use of annotations and comments were virtually nonexistent.  It is important to comment portions of the code to help other developers understand what it does in the even they need to make any changes or add additional modules that would be integrated with your own code.  To enhance the existing project, annotations and comments were embedded at specific portions of the code to help other developers understand how the program performs and the intention of the various modular functions.
 
-Check out the Artifact I enhancement below
+Below is the enhancement for Artifact I
 ```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
