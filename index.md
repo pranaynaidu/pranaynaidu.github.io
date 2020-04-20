@@ -62,7 +62,7 @@ Another enhancement involved the overall efficiency of the project.  For example
 Finally, understanding code is very important for developers in a team setting.  When looking at the original artifact, the use of annotations and comments were virtually nonexistent.  It is important to comment portions of the code to help other developers understand what it does in the even they need to make any changes or add additional modules that would be integrated with your own code.  To enhance the existing project, annotations and comments were embedded at specific portions of the code to help other developers understand how the program performs and the intention of the various modular functions.
 
 **Below is the enhancement for Artifact I**
-```
+```java
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
  * pranay.naidu@snhu.edu
@@ -289,7 +289,7 @@ When dealing with a program that allows users to enter input, it is imperative t
 Considering developer issues within the architecture of the program helped to identify inherent flaws in the conditional loops and fulfilled the course outcomes \[CS-499-03], \[CS-499-04], and \[CS-499-05].  This artifact enhances the original algorithms by taking a secure coding approach to solve the problem of user input vulnerabilities by anticipating exploits in user inputs. 
 
 **Below is the enhancement for Artifact II**
-```ruby
+```java
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
  * pranay.naidu@snhu.edu
@@ -539,7 +539,7 @@ public class ZooMonitoringSystem {
 ```
 
 **Enhancements to the Aquarium Class File**
-```ruby
+```java
 package zoomonitoringsystem;
 
 import java.io.FileInputStream;
@@ -621,7 +621,7 @@ This enhancement was a challenging one.  I had originally attempted to implement
 **Below are the enhancements for Artifact III**  
 
 *RESTful API
-```ruby
+```python
 #!/usr/bin/python
 import json
 from bson import json_util
@@ -838,7 +838,7 @@ if __name__ == '__main__':
 ```
 
 *Finding documents by a string*
-```ruby
+```python
 import json
 from bson import json_util
 from bson.json_util import dumps
@@ -873,7 +873,7 @@ def main():
 main()
 ```
 *Deleting a Document*
-```ruby
+```python
 import json
 from bson import json_util
 from bson.json_util import dumps
@@ -910,7 +910,7 @@ def main():
 main()
 ```
 *Inserting a Document*
-```ruby
+```python
 import json
 from bson import json_util
 from pymongo import MongoClient
@@ -941,7 +941,7 @@ def main():
 main()
 ```
 *Implementing Pipeline Functionality*
-```ruby
+```python
 import json
 from bson import json_util
 from bson.json_util import dumps
