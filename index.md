@@ -50,7 +50,7 @@ Each artifact will include an accompanying narrative to discuss the enhancements
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
 
-# *Artifact I - Software Design and Engineering*
+# Artifact I - Software Design and Engineering
 The artifact used to illustrate competency and demonstration of key outcomes in the area of software design and engineering is the final project from IT145 – Foundation in Application Development.  This artifact was chosen because it demonstrates the use of software engineering and design, but also algorithms and data structures.  It was created early on in the Computer Science curriculum, so the program is somewhat basic, but showcases some of the basics of software design.  Since there are many stages of the software development life cycle, it is important to incorporate elements that represent the core concepts of software design.  This artifact demonstrates design elements such as patterns, separation of data, and modularity.  
 
 When discussing these design elements, we can see the project uses patterns to identify solutions to recurring problems.  This concept is showcased through user menu options; since we know that the user can circulate throughout the menu by selecting specific options, we can implement a pattern that is guaranteed to work so that it may be reused over and over.  We also maintained a separation of data by reading `.txt` files rather than hardcoding data structures within the various functions and classes.  When the user selected a specific menu option, the corresponding file was read to display the contents of the file; in this case it was information on animals and habitats.  Finally, modularity included predetermined functions of code to help increase the overall efficiency of the program.  The components within this 
@@ -61,7 +61,7 @@ Another enhancement involved the overall efficiency of the project.  For example
 
 Finally, understanding code is very important for developers in a team setting.  When looking at the original artifact, the use of annotations and comments were virtually nonexistent.  It is important to comment portions of the code to help other developers understand what it does in the even they need to make any changes or add additional modules that would be integrated with your own code.  To enhance the existing project, annotations and comments were embedded at specific portions of the code to help other developers understand how the program performs and the intention of the various modular functions.
 
-Below is the enhancement for Artifact I
+**Below is the enhancement for Artifact I**
 ```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
@@ -279,74 +279,328 @@ public class ZooMonitoringSystem {
 }
 ```
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Artifact II - Algorithm and Data Structures
+The artifact used to illustrate competency and demonstration of key outcomes in the area of algorithms and data structures is the final project from IT145 – Foundation in Application Development.  This artifact was chosen because it demonstrates the use of software engineering and design, but also algorithms and data structures.  As mentioned in Milestone Two Enhancement One, this artifact was created early on in the Computer Science curriculum and showcases various elements of algorithms and data structures.  It makes sufficient use of data structures within data files to retrieve information on zoo animals and habitats; however, the algorithms are somewhat rudimentary.  Because of this, I decided to use this artifact to showcase enhancements that include more sophisticated algorithms using a secure coding approach.  
 
-### Markdown
+First, looking at the use of manipulating data within `.txt` files, the program made good use of Java’s `FileInputStream` library to read the data files line by line, and display data based on user input.  This showcases the ability of the program to effectively read data from a file into the `fileByteStream`, and essentially checks for data the user requested based on their menu selection.  
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+When dealing with a program that allows users to enter input, it is imperative to ensure that malicious input does not mimic actual code that could cause very adverse effects in behavior of the program.  This was the purpose of the most important enhancement within this artifact: the use of exception handling.  Originally, the program stores the user input into an integer type variable.  However, it did not check for exceptions such as a non-integer value, or whether the user selects a valid integer option.  Therefore, all functions that included loops and conditional statements were checked and enhanced to catch any attempts of invalid user input.  Additional code review revealed that switch cases defaulted to quitting the program if the user does not choose a menu item.  However, this could create security threats if the program does not conditionally check that a valid option is selected so each loop was enhanced to explicitly check the user’s input for a “quit” menu selection.  
 
-```markdown
-Syntax highlighted code block
+Considering developer issues within the architecture of the program helped to identify inherent flaws in the conditional loops and fulfilled the course outcomes \[CS-499-03], \[CS-499-04], and \[CS-499-05].  This artifact enhances the original algorithms by taking a secure coding approach to solve the problem of user input vulnerabilities by anticipating exploits in user inputs. 
 
-# Header 1
-## Header 2
-### Header 3
+**Below is the enhancement(s) for Artifact II**
+```ruby
+/* IT145 Final Project - Zoo Monitoring System (Option 2)
+ * Pranay Naidu
+ * pranay.naidu@snhu.edu
+ */
 
-- Bulleted
-- List
+package zoomonitoringsystem;
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+import java.io.FileInputStream;   // Imports the File Input reader function to allow data from files for be read
+import java.util.Scanner;         // Allows for user keyboard inputs
+import java.io.IOException;      // This allows for catching of any exceptions when reading from file (i.e. file not found)
+public class ZooMonitoringSystem {
+    
+    //Method to print Main Menu
+    public static void MainMenu() {
+        System.out.println("1) Monitor an animal");
+        System.out.println("2) Monitor a habitat");
+        System.out.println("3) Quit\n");
+        
+    }
+    
+    /* The following nested loops iterate through the user inputs
+    * and only allows for the three numeric (3) choices to be entered
+    * if an invalid choice is keyed, program continues to ask for valid input
+    */
+    public static void MainMenuChoice(int mainMenuSelection) throws IOException {  // Throws clause catches any error with file reading
+        Scanner scnr = new Scanner (System.in);   // Initialize scanner function for user input within this method
+        while (mainMenuSelection != 3) {       // while loop is used to check that user does not want to quit.  If not, loop continues.
+            while (mainMenuSelection != 5) {    // same concept as previous while loop
+                switch (mainMenuSelection) {
+                    case 1:  // This loop runs if user selects animal option to monitor
+                        System.out.println("Displaying Animal Options");
+                        System.out.println("-------------------------");
+                        animalMenu(); //calls the function to show the animals options if options 1 is chosen
+                        System.out.println("Please select an animal you would like more details on:");
+                        mainMenuSelection = scnr.nextInt();  //sets the variable to the user's numerical menu selection
+                        System.out.println();
+                        
+                        if ((mainMenuSelection >=1) && (mainMenuSelection <=5)) {  // inner loop checks that valid option is entered by user
+                            chosenAnimal(mainMenuSelection);
+                            return;
+                        }
+                        
+                        else {
+                            while (mainMenuSelection > 5) {
+                                System.out.println("Invalid Selection.");
+                                System.out.println("Please type a valid option number:");
+                                int animalSelection = scnr.nextInt();
+                                chosenAnimal(animalSelection);
+                                return;
+                            }
+                     }
+                        
+                    case 2:  // This loop runs if user selects habitat option to monitor
+                        System.out.println("Displaying Habitat Options");
+                        System.out.println("--------------------------");
+                        habitatMenu();  //calls the function to show the habitats options if options 2 is chosen
+                        System.out.println("Please select a habitat you would like more details on:");
+                        mainMenuSelection = scnr.nextInt();  //sets the variable to the user's numerical menu selection
+                        System.out.println();
+                        if ((mainMenuSelection >= 1) && (mainMenuSelection <=4)) {  // inner loop checks that valid option is entered by user
+                            chosenHabitat(mainMenuSelection);  //calls the function to display the chosen animal
+                            return;
+                        }
+                        
+                        else {
+                            while (mainMenuSelection > 4) {
+                                System.out.println("Invalid Selection.");
+                                System.out.println("Please type a valid option number:");
+                                habitatMenu();
+                                int habitatSelection = scnr.nextInt();
+                                chosenHabitat(habitatSelection);
+                                return;
+                            }
+                        }
+                    case 3:  // Quits program if user enters "3"
+                        break;
+                    default:
+                        System.out.println("You have made an invalid selection.");
+                        System.out.println("Please type a valid option number:");
+                        mainMenuSelection = scnr.nextInt();
+                }
+                System.out.println("Thank you for using the zoo monitoring system. Goodbye");
+            }
+        }
+        
+    //Method to print Animal Sub-Menu
+    public static void animalMenu() {
+        FileInputStream fileByteStream;  // Initializing the FileInputStream function and assigning it to fileByteStream
+        Scanner inFS;
+        String line;
+        fileByteStream = new FileInputStream("animals.txt");  // Reads data from the "animals" text file into fileByteStream
+        inFS = new Scanner(fileByteStream);
+        int i = 0;
+        while ((inFS.hasNextLine())) {   //loop reads the animals.txt data and continues to read each line until there is an empty line
+            line = inFS.nextLine();
+            if (!line.isEmpty()) {
+                i += 1;
+                System.out.println(i + ") " + line);  //as each line contains an animal type, it prints to screen. Hence creating a simple menu by reading text file rather than hardcoding data.
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println("5) Return to Main Menu");
+        fileByteStream.close();
+        System.out.println();
+    }
+        
+        
+    //Method to print Habitat Sub-Menu
+    public static void habitatMenu() {
+        FileInputStream fileByteStream;  // Initializing the FileInputStream function and assigning it to fileByteStream
+        Scanner inFS;
+        String line;
+        fileByteStream = new FileInputStream("habitats.txt");  // Reads data from the "animals" text file into fileByteStream
+        inFS = new Scanner(fileByteStream);
+        int i = 0;
+        while ((inFS.hasNextLine())) {  //loop reads the animals.txt data and continues to read each line until there is an empty line
+            line = inFS.nextLine();
+            if (!line.isEmpty()) {
+                i += 1;
+                System.out.println(i + ") " + line); //as each line contains an habitat type, it prints to screen. Hence creating a simple menu by reading text file rather than hardcoding data.
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println("4) Return to Main Menu");
+        fileByteStream.close();
+        System.out.println();
+    }
 
-[Link](url) and ![Image](src)
+
+    //Method to print info on user's chosen type of Animal
+    public static void chosenAnimal(int typeOfAnimal) throws IOException {  // Throws clause catches any error with file reading
+        Scanner scnr = new Scanner (System.in);
+        int returnToPreviousMenu;
+        while (typeOfAnimal <=5) {
+            switch (typeOfAnimal) {
+                case 1:  //Displays Lion information
+                    System.out.println("Displaying Lions");
+                    System.out.println("----------------");
+                    lion.lion();  //calls the specific java class file for lion
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 2:  //Displays Tiger information
+                    System.out.println("Displaying Tigers");
+                    System.out.println("-----------------");
+                    tiger.tiger();  //calls the specific java class file for tiger
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 3:  //Displays Bear information
+                    System.out.println("Displaying Bears");
+                    System.out.println("----------------");
+                    bear.bear();  //calls the specific java class file for bear
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 4:  //Displays Giraffe information
+                    System.out.println("Displaying Giraffes");
+                    System.out.println("-------------------");
+                    giraffe.giraffe();  //calls the specific java class file for giraffe
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 5: // Returns to the main menu
+                    break;
+                default: // If User selects invalid option
+                    System.out.println("You have made an invalid selection number.");
+                    System.out.println("Returning to the previous menu\n");
+                    System.out.println("------------------------------\n");
+                    animalMenu();
+                    System.out.println("Please select an animal you would like more details on:");
+                    return;
+            }
+            MainMenu();
+            System.out.println("Please make a selection");
+            returnToPreviousMenu = scnr.nextInt();
+            MainMenuChoice(returnToPreviousMenu);
+            return;
+        }
+    }
+
+
+    //Method to print info on user's chosen habitat
+    public static void chosenHabitat(int typeOfHabitat) throws IOException {  // Throws clause catches any error with file reading
+        Scanner scnr = new Scanner (System.in);
+        int returnToPreviousMenu = 0;
+        while (typeOfHabitat <=4) {
+            switch (typeOfHabitat) {
+                case 1:  //Displays Penguin Habitat information
+                    System.out.println("Displaying Penguin Habitat");
+                    System.out.println("--------------------------");
+                    penguin.penguin();  //calls the specific java class file for penguin
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 2:  //Displays Bird House information
+                    System.out.println("Displaying Bird House ");
+                    System.out.println("----------------------");
+                    bird.bird();  //calls the specific java class file for bird
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 3:  //Displays Aquarium information
+                    System.out.println("Displaying Aquarium");
+                    System.out.println("-------------------");
+                    aquarium.aquarium();  //calls the specific java class file for aquarium
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("----------------------");
+                    break;
+                case 4:  //Returns to the main menu
+                    break;
+                default:
+                    System.out.println("You have made an invalid selection.");
+                    System.out.println("\nReturning to Main Menu");
+                    System.out.println("-----------------------\n");
+                    habitatMenu();
+                    System.out.println("Please select a habitat you would like more details on:");
+                    typeOfHabitat = scnr.nextInt();
+                    return;
+            }
+            MainMenu();
+            System.out.println("Please maka a selection");
+            returnToPreviousMenu = scnr.nextInt();
+            MainMenuChoice(returnToPreviousMenu);
+            return;
+        }
+    }
+    
+    //Start of main() method
+    public static void main (String [] args) throws IOException {
+        Scanner scnr = new Scanner (System.in);  	//Initializes scanner to allow for user input
+        int userMenuChoice;  //Initializes user's first choice as integer variable
+        System.out.println("Welcome to the Zoo Monitoring System");
+        System.out.println("------------------------------------");
+        MainMenu(); 	//function call to performs the function MainMenu()
+        System.out.println("What would you like to monitor today:");
+        userMenuChoice = scnr.nextInt();
+        System.out.println();
+        MainMenuChoice(userMenuChoice); //calls the function and uses the user's choice to present information
+    }
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**Enhancements to the Aquarium Class File**
+```ruby
+package zoomonitoringsystem;
 
-### Jekyll Themes
+import java.io.FileInputStream;
+import java.util.Scanner;
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pranaynaidu/pranaynaidu.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
-
-
+public class aquarium {
+    
+   public static void aquarium()
+    FileInputStream fileByteStream = null;  // Initializing the FileInputStream function and assigning it to fileByteStream
+    Scanner inFS = null;
+    Scanner scnr = new Scanner(System.in);
+      
+      // Initialize variables set to each line in the data file
+      String line;
+      String temperature;
+      String foodSource;
+      String cleanliness;
+      String alertLine;
+      
+      fileByteStream = new FileInputStream("habitats.txt"); // Reads data from the "habitats" text file into fileByteStream
+      inFS = new Scanner(fileByteStream);
+    
+      while ((inFS.hasNextLine())) {  //Reads data until there are no more lines in the data file
+      line = inFS.nextLine();    
+      
+         if (line.contains("Aquarium")) {   //Check to see if habitat contains "Aquarium" and prints when user choice is for Aquarium Habitat
+            temperature = inFS.nextLine();          
+            foodSource = inFS.nextLine();
+            cleanliness = inFS.nextLine(); 
+            
+            if (foodSource.contains("*****")) {  //Check for alert on Food Source field
+               alertLine = foodSource;
+               System.out.println("\n!!!!!ALERT!!!!!");
+               System.out.println(alertLine.replace("*", "") + "\n"); //Uses the .replace command to replace the asterisks with empty space
+               System.out.println("Press Enter to view full details");
+               fullDetails = scnr.nextLine();
+               System.out.println(temperature);
+               System.out.println(foodSource.replace("*" , ""));
+               System.out.println(cleanliness);             
+            }
+            
+            else if (cleanliness.contains("*****")) {  
+               alertLine = cleanliness;
+               System.out.println("\n!!!!!ALERT!!!!!");
+               System.out.println(alertLine.replace("*", "") +"\n");  //Uses the .replace command to replace the asterisks with empty space
+               System.out.println("Press Enter to view full details");
+               fullDetails = scnr.nextLine();
+               System.out.println(temperature);
+               System.out.println(foodSource);
+               System.out.println(cleanliness.replace("*" , ""));             
+            }
+            
+            else {
+               System.out.println(temperature + "\n" + foodSource + "\n" + cleanliness + "\n");
+            }
+                   
+      fileByteStream.close();  //Needed to close the File Input Stream
+         }
+      }
+   }
+}
 ```
-import json
-from bson import json_util
-from bson.json_util import dumps
-from pymongo import MongoClient
-connection = MongoClient('localhost', 27017)
-database = connection['market']
-collection = database['stocks']
 
-def deleteDocument(document,tvalue):
-  try:
-    line = "--" * 45  
-    print(line)
-    result = collection.remove(document)
-    print("----------Documents With Ticker Value "+tvalue+" Have Been Deleted  \n")
-    print(dumps(result))
-  except ValidationError as ve:
-    abort(400, str(ve))
-  
 
-def main():
-  line = "--" * 45  
-  print(line+"\n\n")
-  print("\t\t   DELETING DOCUMENT")
-  print("\t\t Provide The Ticker Value for The Documents To Be DELETED, All Documents With\n\t\t That Ticker Value Will Be DELETD \n");
-  print(line+"\n")
-  tvalue = raw_input("Enter Ticker Value #")
-  
-  myquery = {"Ticker" : tvalue}
-  
-  print("--" * 50 +" Below Items Will Be Deleted " + "--"*50+" \n")
-  result=collection.find(myquery).limit(10)
-  print(dumps(result))
-  deleteDocument(myquery,tvalue)
-main()
-```
