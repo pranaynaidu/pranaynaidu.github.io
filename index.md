@@ -21,12 +21,12 @@ Completing the coursework and developing this ePortfolio showcases my strengths 
     - On an enterprise level, software engineering involves working on teams. The Computer Science Program has taught me skills on creating repositories through various sources such as Bitbucket and here on Github.  This is useful because it allows me to work collaboratively and allows for other developers to `commit` versions and updates of code to be linked to the `master` branch of a project.  
     I also have a stronger understanding of of key functions of development team which include planning, testing, analysis, and of course programming.  Learning about the software development life cycle (SDLC) through an Agile framework taught me the benefits of iterative development that allows for the creation of a fluid software system through cross-functional teams.
 - *Communicating to stakeholders*
-    - Perhaps the most important measure of success in a software system is the bottom-line for stakeholders.  The coursework has taught me the concepts for software creation that encompasses the mind of the stakeeholder. In an Agile framework, communication occurs in a slightly different way than in a Waterfall framework.  
+    - Perhaps the most important measure of success in a software system is the bottom-line for stakeholders.  The coursework has taught me concepts for software creation that encompasses the mind of the stakeholder. In an Agile framework, communication occurs in a slightly different way than in a Waterfall framework.  
     The Computer Science Program has taught me the principles of working with all key players in both an informal and formal manner.  This includes face-to-face conversation, electronic communciation, and creating executive summaries that provide a high level overview for the management team. 
 - *Data structures and algorithms*
     - Any complex software system must incorporate data structures and algorithms. By studying and understanding how data structures and algorithms exist in complex computing problems, I was able to showcase my strenghths to highlight how algorithms can process and manipulate information in the data. 
 - *Software engineering and databases*
-    - I've learned that databases are a convenient way to organize a collection of data.  I was able to incorporate several programming languages including Python, Java, SQL, and C/C++ to create databases and engineer a system that effectively manage data through CRUD functionality. 
+    - I've learned that databases are a convenient way to organize a collection of data.  I was able to learn several programming languages including Python, Java, SQL, and C/C++ to create databases and engineer a system that effectively manages data through CRUD functionality. 
 - *Security*
     - The concepts within secure coding have helped me showcase the importance of coding from a security standpoint. Because many software systems require external user input, there is a possibility that cybersecurity threats can occur.  I've learned that if software has a security vulnerability, it could pose a serious threat to the system as a whole and could result in high costs to fix.  My ePortfolio showcases instances where validating user input could mitigate any risk within the program.
 
@@ -288,7 +288,7 @@ When dealing with a program that allows users to enter input, it is imperative t
 
 Considering developer issues within the architecture of the program helped to identify inherent flaws in the conditional loops and fulfilled the course outcomes \[CS-499-03], \[CS-499-04], and \[CS-499-05].  This artifact enhances the original algorithms by taking a secure coding approach to solve the problem of user input vulnerabilities by anticipating exploits in user inputs. 
 
-**Below is the enhancement(s) for Artifact II**
+**Below is the enhancement for Artifact II**
 ```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
@@ -603,4 +603,272 @@ public class aquarium {
 }
 ```
 
+# Artifact III - Databases
+The artifact used for Milestone Four’s enhancement on databases comes from CS340 – Advanced Programming Concepts.  The original artifact used structured query language to perform a series of `CRUD` functions to showcase effective manipulation of database design and structure.  This course was taken during the late stages of the Computer Science Program, so it illustrates a more complex knowledge of databases and how to write code using the Python language and implementing SQL commands within `MongoDB` to manipulate databases to display useful information about the data within.  
 
+This artifact was chosen because it took the basic CRUD functionality of the original submitted project, but enhances it in a way to implement a RESTful API.  Representational State Transfer allows the access of data across different sources to work with an application programming interface (API).  The enhanced artifact uses the API to provide functionality that allows the user to perform CRUD functions to a data document within a specific `URL`.  
+
+Once the python code was written to implement the RESTful API, we used SQL commands to display specific data.  For instance, the following command typed into the terminal would add a new document in a database consisting of a collection of stocks:
+```
+curl -H "Content-Type:application/json" -X POST -d '{"Volume" : 40, "Sector Name" : "New Sector"}' http://localhost:8080/addDocument
+```
+For the above command to be successful, we created a function that uses the data supplied and incorporated the MongoDB function `create()` to add the new document.  For example, there is a line in the code `jsonData = request.json` which passes the data in the `json` object.  Similar functionality was implemented throughout the enhancement to include updating, deleting, and reading information within the database.  
+
+This artifact meets course objective \[CS-499-04].  Because modern software allows users to integrate various programs to communicate with each other, this artifact showcases the creation of an API on the server-side which allows communication with the client-side.  We are able to separate the concerns associated with both the user interface and the data storage associated with it.  A key feature of the RESTful API enhancement is that the information can be retrieved from any resource such as a document or image.  
+
+This enhancement was a challenging one.  I had originally attempted to implement RESTful API functionality, but was unsuccessful.  It took a lot of research, preplanning, and several adjustments to successfully enhance this artifact.  It helped to realize the capabilities of `REST` that allows the user to access data from several resources (in this case a `.json` file).  I also learned more that `REST` and `HTTP` are not the same even though developers use `REST` to make web integration across platforms.  It was interesting to learn the architectural side of a RESTful API and how it is used as a resource to be accessed using Uniform Resource Identifiers (URI).  
+
+**Below are the enhancements for Artifact III**  
+
+*RESTful API
+```ruby
+#!/usr/bin/python
+import json
+from bson import json_util
+from bson.json_util import dumps
+import bottle
+from bottle import route, run, request, abort
+#imports for database
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+# URI paths for restfull services
+#
+#
+   #UPDATING OUR STOCK BY PROVIDING THE CRITERIA, WE USE METHOD PUT, When Key Value is Specified
+#
+@route('/update/<TickerValue>', method='PUT')
+def UpdateMyStock(TickerValue):
+  jsondata = request.json #Retrive all the data passed in the url
+  query = { "Ticker" : TickerValue} #Query Used To Search Documents For Updating
+ 
+  #We use a loop to update the Colection using the parameters from the url
+  for key in jsondata:
+    update =  { "$set":{key:jsondata[key]}}
+    #updating collection
+    collection.update(query,update)
+  updateDocs = collection.find({"Ticker":TickerValue})
+  line = "--" * 45 +"\n" #this will print a line
+  result = dumps(updateDocs) #
+  return line+"\n   All These Details Got Updated>>  \n"+str(result)+"\n  End Of Document >> \n"+line
+
+   
+  
+# We would wish to add document to our stock collection
+# we use put
+
+##when no parameter is added, we still add the object to the collection
+##---------------------------------------No Ticker Value Added----------------------------------------
+#
+@route('/addDocument', method='POST')
+def addDocumentStock():
+  #get all passed dat in a json object using the request.json
+  jsonData = request.json
+  #Lets insert the document passed to the collection
+  newDocument = collection.insert(jsonData) #returns the _id
+  retriveDoc = collection.find_one({"_id":newDocument})
+  line = "--" * 45 +"\n"
+  return line+ "\nAdded Document >> \n "+dumps(retriveDoc)+"\n End Of Document >>\n "+line #return inserted document.
+
+##-----------------------------When Ticker Value Is Added --------------------------------------------
+@route('/addDocument/<tickerValue>', method='POST')
+def addDocumentStock(tickerValue):
+  #get all passed dat in a json object using the request.json
+  jsonData = request.json
+  jsonData.update( {'Ticker' : tickerValue} ) 
+  #Lets insert the document passed to the collection
+  recordId = collection.insert(jsonData) #insert data to the stocks collection
+  retriveDoc = collection.find_one({"_id":recordId})
+  line = "--" * 45 +"\n"
+  return line+ "\nAdded Document>> \n "+dumps(retriveDoc)+" \n End Of Document >>\n "+line #return inserted document.
+
+
+
+
+##---------------------------------------Deleting Data --------------------------------------------------------------
+#
+
+@route('/remove/<TickerValue>', method='GET')
+def removeStock(TickerValue):
+  query = {"Ticker" :TickerValue} #Query to Search Target Data
+  result = collection.delete_many(query) #Will delete all documents that matching the query
+  return "\n Requested Document Has Been Deleted.... \n" #return results to the user.
+
+
+
+##-----------------------------Reading Data From Collectiosn Given Ticker Value-------------------------------------------
+
+@route('/RequestDoc/<TickerValue>', method='GET')
+def requestDocument(TickerValue):
+  readDocument = collection.find({"Ticker":TickerValue}) #
+  #provided
+  line = "--" * 45 +"\n"
+  return line+"\nCreteria Added [Ticker Value] \n This Is The Requested Document >>\n "+dumps(readDocument)+" \n End Of Requested Document >>"
+
+#When no parameter is added
+
+@route('/RequestDoc/', method='GET')
+def requestDocument():
+  readDocument = collection.find().limit(1) #First Records Will Displayed
+  #provided
+  line = "--" * 45 +"\n"
+  return line+"\n No Creteria Added [Ticker Value]\n This Is The Requested Document >>\n "+dumps(readDocument)+" \n End Of Requested Document >>\n"
+
+
+##-----------------------------Getting A Stock Report--------------------------------------
+
+
+@route('/stockSummery/', method='POST')
+def getReport(): 
+  line = "--" * 45 +"\n"
+  tickerSymbols = request.json.get('list') #retrieves the value of the list key in the url data
+  #Removing the curl Braces from the List 
+  tickerSymbols = tickerSymbols.replace("[","")
+  tickerSymbols = tickerSymbols.replace("]","")
+  tickerSymbols = list(tickerSymbols.split(",")) #create a list from the remaining list
+  EmptyTickers = list()
+  print(tickerSymbols)
+  underline = "_" * 30;
+  #This for loop uses each ticker in the list,
+  #get ist summer and add the summery to the items list
+  for ticker in tickerSymbols:
+      item = Pipeline(ticker)
+      print(item)
+      #Building string for display
+      EmptyTickers.append(line+" \t\t\t **Report For Symbol ["+ticker+"] ** \n \t\t\t"+underline+" \n"+item+"\n\n "+line)
+  return EmptyTickers  #return a lit of items
+
+
+##-----------------------------Getting Industry Report--------------------------------------
+#
+#
+#
+#
+
+#Most URLs replaces spaces with +, therefore for an industry 
+#That has spaces, we replace the spaces with + sign
+@route('/getIndustryReport/<industryName>', method='GET')
+def getReport(industryName):
+  industry = industryName.replace("+"," ")
+  #Pipeline is composed of Stages, each stage 
+  #Stage One In The Pipeline, Fields To Be Produces
+  print("\n\n\n "+industry+"\n\n")
+  result2 = IndustryPipeline(industry)
+  firstStage = { '$project': {'Industry':1, 'Ticker':1,'Float Short':1,'Relative Volume':1,'Volume':1,'Performance (Year)':1 } }
+  #Second Stage
+  secondStage = { '$match': { "Industry": industry } }
+  print("\n\n\n "+str(secondStage)+"\n\n")
+  #Stage Three
+  thirsStage = { '$group': { '_id': "$Industry", 'Total Float Short': {'$sum': "$Float Short" },
+                           'Average Relative Volume':{'$avg':"$Relative Volume"},
+                           'Average Volume':{'$avg':'$Volume'},
+                           'Max Performance (Year)':{'$max':'$Performance (Year)'},
+                           'Total Volume':{'$sum':'$Volume'} } }
+  #Adding Limit
+  fourthStage = { '$limit' : 5 }
+  query = [firstStage,secondStage,thirsStage,fourthStage]
+  print(str(query))
+  result=collection.aggregate(query)
+  result = dumps(result)
+  #print results to user.
+  return "-------- \n \t\t\t Portfolio Report For  ["+industry+"] Industrie(s) \n\n "+result+" \n-------- \n"+result2+"\n"
+
+##************************************************End Of Industry Report *****************************************
+#
+#
+
+#--------------------------Pipeline -------------------------------------------------------------------------------
+#
+#
+#
+#
+#This pipeline retrive data depending on several specified data
+#we sum fields, calculate Voume, 
+
+def Pipeline(ticker):
+  #stage one specifies the fields to be passed to the next stages
+  firstStage = { '$project': { 'Ticker':1,'Float Short':1,'Relative Volume':1,'Volume':1,'Performance (Year)':1 } }
+  #Specifies the query [$match] << The Targeted Documents
+  #
+  secondStage = { '$match': { "Ticker": ticker } }
+  #We do all The Operations Here sum, Divion, Multiplication and Others
+  thirdStage = { '$group': { '_id': "$Ticker", 'Total Float Short': {'$sum': "$Float Short" },
+                           'Average Relative Volume':{'$avg':"$Relative Volume"},
+                           'Total Accupied Volume':{'$sum':'$Volume'},
+                           'Max Performance (Year)':{'$max':'$Performance (Year)'},
+                           'Minimum Volume Used':{'$min':'$Volume'} } }
+  myQuery = [firstStage,secondStage,thirdStage]
+  result=collection.aggregate(myQuery) 
+  result = dumps(result)
+  return result
+
+
+
+def IndustryPipeline(industry):
+  #stage one specifies the fields to be passed to the next stages
+  firstStage = { '$project': { 'Industry':1,'Float Short':1,'Price':1,'Average True Range':1,'50-Day Simple Moving Average':1,'Change':1 } }
+  #Specifies the query [$match] << The Targeted Documents
+  #
+  secondStage = { '$match': { "Industry": industry } }
+  #We do all The Operations Here sum, Divion, Multiplication and Others
+  thirdStage = { '$group': { '_id': "$Industry", 'Total Float Short': {'$sum': "$Float Short" },
+                           'Average Average True Range':{'$avg':"$Average True Range"},
+                           'Total Price':{'$sum':'$Price'},
+                           'Max 50-Day Simple Moving Average (Year)':{'$max':'$50-Day Simple Moving Average'},
+                           'Minimum Change':{'$min':'$Change'} } }
+  
+  #Adding Limit
+  fourthStage = { '$limit' : 5 }
+  myQuery = [firstStage,secondStage,thirdStage,fourthStage]
+  result=collection.aggregate(myQuery) 
+  result = dumps(result)
+  return "-------- \n More Usefull Information \n\n"+result+"\n\n"
+
+#--------------------------Main Program Start ----------------------------------------------------
+#
+#
+#
+#
+  
+if __name__ == '__main__':
+  run(debug=True,reloader = True)
+  #run(host='localhost', port=8080)
+```
+
+*Finding documents by a string*
+```ruby
+import json
+from bson import json_util
+from bson.json_util import dumps
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+database = connection['market']
+collection = database['stocks']
+
+def findDocument(query,userDisplay):
+  try:
+    line = "--" * 45 
+    print(line+"\n")
+    result=collection.find(query,userDisplay)
+    print(dumps(result))
+    print(line+"\n")
+    print("Thank you...we are Done Processing... \n")
+  except ValidationError as ve:
+    abort(400, str(ve))
+  
+
+def main():
+  line = "--" * 45  
+  print("\t\t   Welcome, Lets Find Documents Using The Industry Key Value ")
+  print("\t\t Enter The Name Of The Industry... \n");
+  print(line+"\n")
+  userIndustry = raw_input("Name Of The Industry# ")
+  query = {"Industry" : userIndustry}
+  userDisplay = {"Ticker":1,"_id":0}
+  print("Thank you...We Are Processing... \n")
+  findDocument(query,toDisplay)
+ 
+main()
+```
