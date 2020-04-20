@@ -1,6 +1,7 @@
 # Personal Self-Assessment
 The Computer Science Program has been a tremendous journey for me and, quite honestly, it has had its ups and downs.  
 
+Check out my code review [here] (https://youtu.be/gu795jxS6So).
 
 ```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
