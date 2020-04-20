@@ -620,7 +620,7 @@ This enhancement was a challenging one.  I had originally attempted to implement
 
 **Below are the enhancements for Artifact III**  
 
-*RESTful API
+*RESTful API*
 ```python
 #!/usr/bin/python
 import json
