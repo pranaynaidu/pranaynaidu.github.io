@@ -1,6 +1,6 @@
 # Personal Self-Assessment
 The Computer Science Program has been a tremendous journey for me and, quite honestly, it has had its ups and downs.  
-The three most important concepts learned that I think would benefit for my career advancement are:
+The three most important concepts learned that I think would benefit for my career advancement are:  
 
 - **Preplanning**
     - I found it quite useful to use tools such as pseudocode and wireframing in the initial planning stages of a project.
