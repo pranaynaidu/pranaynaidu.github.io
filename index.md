@@ -1,5 +1,5 @@
 # Personal Self-Assessment
-The Computer Science Program has been a tremendous journey for me and, quite honestly, it has had its ups and downs.  
+The Computer Science Program has been a tremendous journey for me and quite honestly, it has had its ups and downs.  
 The three most important concepts learned that I think would benefit for my career advancement are:  
 
 - **Preplanning**
