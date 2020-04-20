@@ -15,6 +15,8 @@ The three most important concepts learned that I think would benefit for my care
     
 Of course, there are loads of other concepts that were learned, but I think these broad concepts could be useful in different sectors of the IT field.
 
+
+
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
 ```ruby
