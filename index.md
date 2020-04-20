@@ -24,8 +24,28 @@ Completing the coursework and developing this ePortfolio showcases my strengths 
     - Perhaps the most important measure of success in a software system is the bottom-line for stakeholders.  The coursework has taught me the concepts for software creation that encompasses the mind of the stakeeholder. In an Agile framework, communication occurs in a slightly different way than in a Waterfall framework.  
     The Computer Science Program has taught me the principles of working with all key players in both an informal and formal manner.  This includes face-to-face conversation, electronic communciation, and creating executive summaries that provide a high level overview for the management team. 
 - *Data structures and algorithms*
-- *Software engineering and database*
+    - Any complex software system must incorporate data structures and algorithms. By studying and understanding how data structures and algorithms exist in complex computing problems, I was able to showcase my strenghths to highlight how algorithms can process and manipulate information in the data. 
+- *Software engineering and databases*
+    - I've learned that databases are a convenient way to organize a collection of data.  I was able to incorporate several programming languages including Python, Java, SQL, and C/C++ to create databases and engineer a system that effectively manage data through CRUD functionality. 
 - *Security*
+    - The concepts within secure coding have helped me showcase the importance of coding from a security standpoint. Because many software systems require external user input, there is a possibility that cybersecurity threats can occur.  I've learned that if software has a security vulnerability, it could pose a serious threat to the system as a whole and could result in high costs to fix.  My ePortfolio showcases instances where validating user input could mitigate any risk within the program.
+
+The purpose of my ePortfolio is to showcase my strengths and learnings in the above topics.  I will introduce various artifacts created during the Computer Science Program and conduct an informal code review on these artifacts.  This code review will serve as a baseline for enhancements that illustrate the concepts learned and how the existing artifacts can be improved.
+
+Each artifact will include an accompanying narrative to discuss the enhancements and will focus on satisfying the following course outcomes:  
+
+- \[CS-499-01] Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision making in the field of computer science. 
+
+- \[CS-499-02] Design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sound, and appropriately adapted to specific audiences and contexts. 
+
+- \[CS-499-03] Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution, while managing the trade-offs involved in design choices (data structures and algorithms).  
+
+- \[CS-499-04] Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals (software engineering/design/database).  
+
+- \[CS-499-05] Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.
+
+
+
 
 
 Check out my code review [here](https://youtu.be/gu795jxS6So).
