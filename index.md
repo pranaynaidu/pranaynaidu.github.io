@@ -62,7 +62,7 @@ Another enhancement involved the overall efficiency of the project.  For example
 Finally, understanding code is very important for developers in a team setting.  When looking at the original artifact, the use of annotations and comments were virtually nonexistent.  It is important to comment portions of the code to help other developers understand what it does in the even they need to make any changes or add additional modules that would be integrated with your own code.  To enhance the existing project, annotations and comments were embedded at specific portions of the code to help other developers understand how the program performs and the intention of the various modular functions.
 
 **Below is the enhancement for Artifact I**
-```ruby
+```
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
  * Pranay Naidu
  * pranay.naidu@snhu.edu
