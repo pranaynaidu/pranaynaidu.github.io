@@ -7,6 +7,7 @@ The three most important concepts learned that I think would benefit for my care
     - Backing up code often and with a purpose is another concept that I think is crucial for developers.
     Chances are that the real-world workplace will find me working on a team with multiple developers working on the same    code.  Thus, making frequent backups in the event of a program crash due to new code being introduced would allow going backwards to a known working version.
 - **Annotating**
+    - This fundamental concept in software engineering is crucial for entire development life cycle. Annotation of code helps  other developers on the team understand exactly how your code functions.
     
 
 Of course, there are loads of concepts that were learned, but I think these broad concepts could be useful in different sectors of the IT field.  For instance,       And finally, annotating helps these other developers on the team understand exactly how your code functions.  
