@@ -13,7 +13,10 @@ The three most important concepts learned that I think would benefit for my care
 - **Annotating**
     - This fundamental concept in software engineering is crucial for entire development life cycle. Annotation of code helps  other developers on the team understand exactly how your code functions.
     
-Of course, there are loads of other concepts that were learned, but I think these broad concepts could be useful in different sectors of the IT field.
+Of course, there are a mountain of other concepts that were learned, but I think these broad concepts could be useful in different sectors of the IT field.  
+
+[ ] Pranay
+[x] Naidu
 
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
