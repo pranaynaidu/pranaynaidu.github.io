@@ -1,5 +1,5 @@
 # Personal Self-Assessment
-The Computer Science Program has been a tremendous journey that has brought
+The Computer Science Program has been a tremendous journey and at times ha 
 
 
 ```ruby
@@ -252,3 +252,41 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+
+```
+import json
+from bson import json_util
+from bson.json_util import dumps
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+database = connection['market']
+collection = database['stocks']
+
+def deleteDocument(document,tvalue):
+  try:
+    line = "--" * 45  
+    print(line)
+    result = collection.remove(document)
+    print("----------Documents With Ticker Value "+tvalue+" Have Been Deleted  \n")
+    print(dumps(result))
+  except ValidationError as ve:
+    abort(400, str(ve))
+  
+
+def main():
+  line = "--" * 45  
+  print(line+"\n\n")
+  print("\t\t   DELETING DOCUMENT")
+  print("\t\t Provide The Ticker Value for The Documents To Be DELETED, All Documents With\n\t\t That Ticker Value Will Be DELETD \n");
+  print(line+"\n")
+  tvalue = raw_input("Enter Ticker Value #")
+  
+  myquery = {"Ticker" : tvalue}
+  
+  print("--" * 50 +" Below Items Will Be Deleted " + "--"*50+" \n")
+  result=collection.find(myquery).limit(10)
+  print(dumps(result))
+  deleteDocument(myquery,tvalue)
+main()
+```
