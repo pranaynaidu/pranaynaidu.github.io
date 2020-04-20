@@ -15,6 +15,16 @@ The three most important concepts learned that I think would benefit for my care
     
 Of course, there are a mountain of other concepts that were learned, but I think these broad concepts could serve as core skills to have while working in different sectors of the IT field.  
 
+Completing the coursework and developing this ePortfolio showcases my strengths in the following topics:  
+
+- *Collaborating in a team environment
+    - On an enterprise level, software engineering involves working on teams. The Computer Science Program has taught me skills on creating repositories through various sources such as Bitbucket and here on Github.  This is useful because it allows me to work collaboratively and allows for other developers to `commit` versions and updates of code to be linked to the `master` branch of a project.  
+    I also have a stronger understanding of of key functions of development team which include planning, testing, analysis, and of course programming.
+- *Communicating to stakeholders
+- *Data structures and algorithms
+- *Software engineering and database
+- *Security
+
 
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
