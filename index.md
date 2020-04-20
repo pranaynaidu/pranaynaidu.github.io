@@ -3,13 +3,13 @@ The Computer Science Program has been a tremendous journey for me and, quite hon
 The three most important concepts learned that I think would benefit for my career advancement are:  
 
 - **Preplanning**
-    - I found it quite useful to use tools such as pseudocode and wireframing in the initial planning stages of a project.  
-    
+    - I found it quite useful to use tools such as pseudocode and wireframing in the initial planning stages of a project.  Although most of the course project requirements were explicitly given, it was important to initialize a plan of action that included time management, allocating the course reading materials to supplement the design, and creating a structured process to design, test, and implement program functions to produce the required results.
+
 - **Backing up code**
     - Backing up code often and with a purpose is another concept that I think is crucial for developers.
     Chances are that the real-world workplace will find me working on a team with multiple developers working on the same    code.  
     Thus, making frequent backups in the event of a program crash due to new code being introduced would allow going backwards to a known working version.  
-    
+
 - **Annotating**
     - This fundamental concept in software engineering is crucial for entire development life cycle. Annotation of code helps  other developers on the team understand exactly how your code functions.
     
