@@ -45,10 +45,11 @@ Each artifact will include an accompanying narrative to discuss the enhancements
 - \[CS-499-05] Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.
 
 
-
-
+# Code Review
 
 Check out my code review [here](https://youtu.be/gu795jxS6So).
+
+
 
 ```ruby
 /* IT145 Final Project - Zoo Monitoring System (Option 2)
