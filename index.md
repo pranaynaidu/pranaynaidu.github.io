@@ -3,7 +3,8 @@ The Computer Science Program has been a tremendous journey for me and, quite hon
 The three most important concepts learned that I think would benefit for my career advancement are:
 - Preplanning
 - Backing up code
-- Annotating.  
+- Annotating
+
 Of course, there are loads of concepts that were learned, but I think these broad concepts could be useful in different sectors of the IT field.  For instance, I found it quite useful to use tools such as pseudocode and wireframing in the initial planning stages of a project.  Backing up code often and with a purpose is another concept that I think is crucial for developers.  Chances are that the real-world workplace will find me working on a team with multiple developers working on the same code.  Thus, making frequent backups in the event of a program crash due to new code being introduced would allow going backwards to a known working version.  And finally, annotating helps these other developers on the team understand exactly how your code functions.  
 Check out my code review [here](https://youtu.be/gu795jxS6So).
 
