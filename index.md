@@ -1,5 +1,5 @@
 # Personal Self-Assessment
-The Computer Science Program has been a tremendous journey and at times ha 
+The Computer Science Program has been a tremendous journey for me and, quite honestly, it has had its ups and downs.  
 
 
 ```ruby
