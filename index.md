@@ -21,7 +21,8 @@ Completing the coursework and developing this ePortfolio showcases my strengths 
     - On an enterprise level, software engineering involves working on teams. The Computer Science Program has taught me skills on creating repositories through various sources such as Bitbucket and here on Github.  This is useful because it allows me to work collaboratively and allows for other developers to `commit` versions and updates of code to be linked to the `master` branch of a project.  
     I also have a stronger understanding of of key functions of development team which include planning, testing, analysis, and of course programming.  Learning about the software development life cycle (SDLC) through an Agile framework taught me the benefits of iterative development that allows for the creation of a fluid software system through cross-functional teams.
 - *Communicating to stakeholders*
-    - Perhaps the most important aspect to a software system is the bottom-line for stakeholders.  The coursework has taught me the 
+    - Perhaps the most important measure of success in a software system is the bottom-line for stakeholders.  The coursework has taught me the concepts for software creation that encompasses the mind of the stakeeholder. In an Agile framework, communication occurs in a slightly different way than in a Waterfall framework.  
+    The Computer Science Program has taught me the principles of working with all key players in both an informal and formal manner.  This includes face-to-face conversation, electronic communciation, and creating executive summaries that provide a high level overview for the management team. 
 - *Data structures and algorithms*
 - *Software engineering and database*
 - *Security*
