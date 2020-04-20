@@ -872,3 +872,107 @@ def main():
  
 main()
 ```
+*Deleting a Document*
+```ruby
+import json
+from bson import json_util
+from bson.json_util import dumps
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+database = connection['market']
+collection = database['stocks']
+
+def deleteDocument(document,tvalue):
+  try:
+    line = "--" * 45  
+    print(line)
+    result = collection.remove(document)
+    print("----------Documents With Ticker Value "+tvalue+" Have Been Deleted  \n")
+    print(dumps(result))
+  except ValidationError as ve:
+    abort(400, str(ve))
+  
+
+def main():
+  line = "--" * 45  
+  print(line+"\n\n")
+  print("\t\t   DELETING DOCUMENT")
+  print("\t\t Provide The Ticker Value for The Documents To Be DELETED, All Documents With\n\t\t That Ticker Value Will Be DELETD \n");
+  print(line+"\n")
+  tvalue = raw_input("Enter Ticker Value #")
+  
+  myquery = {"Ticker" : tvalue}
+  
+  print("--" * 50 +" Below Items Will Be Deleted " + "--"*50+" \n")
+  result=collection.find(myquery).limit(10)
+  print(dumps(result))
+  deleteDocument(myquery,tvalue)
+main()
+```
+*Inserting a Document*
+```ruby
+import json
+from bson import json_util
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+database = connection['market']
+collection = database['stocks']
+
+def insertDocument(document):
+  message = ""
+  try:
+    result=collection.insert(document)
+    message = "Document Added Successifully"
+  except ValidationError as ve:
+    abort(400, str(ve))
+    message = "Document Could Not Be Added.."
+  return message
+
+def main():
+  line = "--" * 45  
+  print(line+"\n\n")
+  document = raw_input("Enter Your Document:")
+  print("Processing Document.....\n Received Document \n"+line)
+  print(document)
+  print insertDocument(json.loads(document))
+  print("Thank you for using Our Service....Byee \n")
+  print(line+"\n\n")
+  
+main()
+```
+*Implementing Pipeline Functionality*
+```ruby
+import json
+from bson import json_util
+from bson.json_util import dumps
+from pymongo import MongoClient
+connection = MongoClient('localhost', 27017)
+database = connection['market']
+collection = database['stocks']
+
+def pipeline(pipe):
+  try:
+    line = "--" * 45  
+    print(line+"\n")
+    result=collection.aggregate(pipe)
+    result = dumps(result)
+    print(result)
+    print(line+"\n")
+  except ValidationError as ve:
+    abort(400, str(ve))
+  
+
+def main():
+  line = "--" * 45  
+  print("\t\t Aggregation Pipeline Statements")
+  print("\t\t You will need to Enter Sector Name \n");
+  print(line+"\n")
+  userSector = raw_input("Name Of The Sector# ")
+  #I will add each stage separetly in the next query
+  firstStage = { '$match': { "Sector": userSector } }
+  secondStage= { '$group': { '_id': "$Industry", 'Total Austanding Shares:': {'$sum': "$Shares Outstanding" } } }
+  pipe = [firstStage,secondStage]
+  pipeline(pipe)
+  print("Thank You.\n")
+main()
+```
